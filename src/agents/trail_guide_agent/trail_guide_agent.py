@@ -19,7 +19,7 @@ project_client = AIProjectClient(
 )
 
 agent = project_client.agents.create_version(
-    agent_name=os.environ["AGENT_NAME"],
+    agent_name="trail-guide-2",
     definition=PromptAgentDefinition(
         model="gpt-5.1",  # Use Global Standard model
         instructions=instructions,
