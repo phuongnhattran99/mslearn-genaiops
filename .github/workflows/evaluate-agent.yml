@@ -29,10 +29,6 @@ jobs:
           echo "PR URL: ${{ github.event.issue.pull_request.html_url }}"
           echo "PR number: ${{ github.event.issue.number }}"
 
-  evaluate:
-    runs-on: ubuntu-latest
-    
-    steps:
       - name: Checkout code
         uses: actions/checkout@v4
       
