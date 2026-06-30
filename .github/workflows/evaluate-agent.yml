@@ -8,6 +8,7 @@ on:
       - 'src/agents/trail_guide_agent/**'
   workflow_dispatch:
   # Uncomment the lines below to enable automatic evaluation on pull requests
+  # Uncomment the lines below to enable automatic evaluation on pull requests
 
 
 permissions:
