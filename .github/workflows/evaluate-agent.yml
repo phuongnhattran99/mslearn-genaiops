@@ -17,8 +17,6 @@ permissions:
 jobs:
   deploy-prod:
     if: >-
-      github.event.issue != null &&
-      github.event.issue.pull_request != null &&
       contains(github.event.comment.body, 'test-PR')
     runs-on: ubuntu-latest
     steps:
@@ -30,12 +28,6 @@ jobs:
           echo "Triggered by comment: ${{ github.event.comment.body }}"
           echo "PR URL: ${{ github.event.issue.pull_request.html_url }}"
           echo "PR number: ${{ github.event.issue.number }}"
-
-      # Placeholder: login / evaluate / run tests
-      - name: Placeholder - run evaluation
-        run: |
-          echo "Running evaluation steps..."
-          # Thêm các lệnh thực tế của bạn ở đây
 
   evaluate:
     runs-on: ubuntu-latest
