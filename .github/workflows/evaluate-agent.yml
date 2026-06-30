@@ -7,9 +7,6 @@ on:
     paths:
       - 'src/agents/trail_guide_agent/**'
   workflow_dispatch:
-  # Uncomment the lines below to enable automatic evaluation on pull requests
-  # Uncomment the lines below to enable automatic evaluation on pull requests
-
 
 permissions:
   contents: read
@@ -17,6 +14,12 @@ permissions:
   id-token: write
 
 jobs:
+  deploy-prod:
+    if: >-
+      github.event.issue.pull_request != null &&
+      contains(github.event.comment.body, '/deploy-prod')
+    runs-on: ubuntu-latest
+  
   evaluate:
     runs-on: ubuntu-latest
     
