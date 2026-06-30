@@ -1,12 +1,13 @@
 name: Evaluate Trail Guide Agent
 
 on:
-  # Uncomment the lines below to enable automatic evaluation on pull requests
   pull_request:
     branches: [main]
     paths:
       - 'src/agents/trail_guide_agent/**'
   workflow_dispatch:
+  issue_comment:
+    types: [created]
 
 permissions:
   contents: read
@@ -16,10 +17,26 @@ permissions:
 jobs:
   deploy-prod:
     if: >-
+      github.event.issue != null &&
       github.event.issue.pull_request != null &&
-      contains(github.event.comment.body, '/deploy-prod')
+      contains(github.event.comment.body, 'test-PR')
     runs-on: ubuntu-latest
-  
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Show trigger info
+        run: |
+          echo "Triggered by comment: ${{ github.event.comment.body }}"
+          echo "PR URL: ${{ github.event.issue.pull_request.html_url }}"
+          echo "PR number: ${{ github.event.issue.number }}"
+
+      # Placeholder: login / evaluate / run tests
+      - name: Placeholder - run evaluation
+        run: |
+          echo "Running evaluation steps..."
+          # Thêm các lệnh thực tế của bạn ở đây
+
   evaluate:
     runs-on: ubuntu-latest
     
